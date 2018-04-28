@@ -2,14 +2,14 @@ import requests
 from urllib.parse import urlencode
 from requests.exceptions import RequestException
 
-def get_page_index():
+def get_page_index(offset,keyword):
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36"
     }
     data = {
-        'offset': 0,
+        'offset': offset,
         'format': 'json',
-        'keyword': '街拍',
+        'keyword': keyword,
         'autoload': 'true',
         'count': '20',
         'cur_tab': 1,
@@ -25,7 +25,12 @@ def get_page_index():
         print('请求索引页出错')
         return None
 
+def main():
+    html = get_page_index(0,'街拍')
+    print(html)
 
+if __name__ == '__main__':
+    main()
 
 
 
